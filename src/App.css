@@ -1,38 +1,159 @@
-.App {
-  text-align: center;
-}
 
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
+.range{
+  max-width: 1350px;
+  padding: 100px 15px;
+  margin-left: auto;
+  margin-right: auto;
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  gap: 100px;
 }
-
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
-}
-
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
+.left{
   display: flex;
   flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
+  gap: 10px;
+  width: 80px;
+}
+.left button{
+  font-size: 14px;
+  cursor: pointer;
+  font-style: normal;
+  font-weight: 600;
+  line-height: 18px;
+  border: none;
+  background: none;
+  text-align: left;
+  text-decoration: underline;
+  color: #0167B3;
+  opacity: 0.5;
+}
+.left button.active{
+  opacity: 1;
+  text-decoration: none;
+}
+.rc-slider-handle{
+  width: 20px !important;
+  height: 20px !important;
+  opacity: 1 !important;
+  background-color: #fff;
+  border: solid 5px #5CADEA !important;
+  
+}
+.rc-slider-handle.rc-slider-handle-dragging{
+  box-shadow: 0 0 5px #5CADEA !important;
+}
+.rc-slider-dot{
+  display: none !important;
+}
+.rc-slider-step{
+  height: 10px !important;
+}
+.rc-slider-rail{
+  height: 10px !important;
+  background: #EDF1F8 !important; 
+}
+.rc-slider-track{
+  height: 10px !important;
+  border-top: 2px solid #EDF1F8  !important;
+  border-bottom: 2px solid #EDF1F8  !important;
+  background: #5CADEA !important;
 }
 
-.App-link {
-  color: #61dafb;
+.rc-slider-mark{
+  top: 28px !important;
+}
+.rc-slider-mark-text{
+  color: #999 !important;
+  font-variant-numeric: lining-nums proportional-nums;
+  font-size: 14px !important;
+  font-style: normal;
+  font-weight: 600 !important;
+  line-height: 18px !important;
+}
+.handle-tooltips {
+  display: flex;
+  justify-content: space-between;
+  margin-top: 10px;
 }
 
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
+.tooltip {
+  color: #0167B3;
+  text-align: center;
+  font-size: 18px;
+  font-style: normal;
+  font-weight: 600;
+  line-height: 24px; 
+  padding: 5px 10px;
+  border-radius: 5px;
+  position: absolute;
+  width: max-content;
+  max-width: 80px;
+  filter: drop-shadow(0px 5px 15px rgba(14, 88, 143, 0.20));
+  background: #fff;
+  left: 50%;
+  transform: translateX(-50%);
+  isolation: isolate;
+}
+.tooltip::before{
+  content: '';
+  position: absolute;
+  z-index: -1;
+  background: #fff;
+  bottom: -5px;
+  border-radius: 2px;
+  left: 50%;
+  transform: translateX(-50%) rotate(-45deg);
+  width: 10px;
+  height: 10px;
+}
+.tooltip-1{
+  bottom: calc(100% + 18px);
+}
+.tooltip-2{
+  top: calc(100% + 18px);
+}
+.tooltip-2::before{
+  top: -5px;
+  bottom: auto;
+}
+.rc-slider-mark-text.bold{
+  font-weight: 600 !important;
+  color: #333 !important;
+}
+
+@media (max-width: 1200px){
+  .range{
+    gap: 40px;
   }
-  to {
-    transform: rotate(360deg);
+  .rc-slider-mark-text{
+    font-size: 12px !important;
+  }
+}
+@media (max-width: 992px){
+  .range{
+    flex-direction: column;
+    padding: 50px 30px;
+    gap: 30px;
+  }
+  .left{
+    align-items: center;
+  }
+}
+@media (max-width: 768px){
+
+  .range.month .rc-slider-mark-text:not(.bold){
+    display: none;
+  }
+}
+@media (max-width: 576px){
+  .rc-slider-mark-text{
+    font-size: 10px !important;
+  }
+  .tooltip {
+    font-size: 12px;
+    line-height: 120%;
+    padding: 8px;
+    max-width: 60px;
   }
 }
